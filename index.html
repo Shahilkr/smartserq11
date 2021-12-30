@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    
+  </head>
+  <body>
+      <div>
+          <ul id="list">
+              <li>Title price</li>
+          </ul>
+      </div>
+	<script>
+    function hi()
+        {
+            fetch('https://s3.amazonaws.com/open-to-cors/assignment.json').then((response)=>{
+             return response.json();
+            }).then((res)=>{
+                
+                
+                //str[0]='[';
+                //str[str.length]=']';
+                var li= document.getElementById('list');
+                var list=[];
+                var s=Object.keys(res['products'])
+                for (i=0;i<s.length;i++)
+                {
+                    list.push(res['products'][s[i]]);
+                }
+                list.sort(function(a,b){
+                    return b.popularity-a.popularity;
+                });
+                list.forEach((item)=>{
+                    li.innerHTML+='<li>'+item.title+' '+item.price+'</li>';
+                });
+                console.log(list);
+                //console.log(JSON.parse(str));
+            }).catch((err)=>{console.error(err);});
+        }
+        hi();
+    </script>
+  </body>
+</html>
