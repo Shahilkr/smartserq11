@@ -4,14 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+    <style>
+        table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+        td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+    </style>
     
   </head>
   <body>
+    
       <div>
-          <ul id="list">
-              <li>Title price</li>
-          </ul>
+          <table id="list">
+            <tr>
+            <th>Title</th><th>Price</th>
+            </tr> 
+          </table>
       </div>
 	<script>
     function hi()
@@ -34,7 +52,7 @@
                     return b.popularity-a.popularity;
                 });
                 list.forEach((item)=>{
-                    li.innerHTML+='<li>'+item.title+' '+item.price+'</li>';
+                    li.innerHTML+='<tr><td>'+item.title+'</td><td>'+item.price+'</td></tr>';
                 });
                 console.log(list);
                 //console.log(JSON.parse(str));
